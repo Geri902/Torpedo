@@ -357,25 +357,34 @@ int StartGame(){
     printf("\nManuálisan vagy autómatikusan szeretnéd lerakni a hajóidat?( M/ A)\n");
     char gameType;
     int autoTurn = 0;
-
-    scanf(" %c", &gameType);
+    int readCorrectly = 0;
+    int inputCount = 0;
     
-    switch(gameType){
+    do{
+        inputCount = scanf(" %c", &gameType);
+        switch(gameType){
         case 'M':
             Setup(1,0);
+            readCorrectly = 1;
             break;
         case 'A':
             Setup(1,1);
+            readCorrectly = 1;
             break;
         case 'R':
             Setup(1,1);
             autoTurn = 1;
+            readCorrectly = 1;
             break;
         default:
-            Setup(1,1);
+            printf("\e[1;1H\e[2J");
+            printf("\nManuálisan vagy autómatikusan szeretnéd lerakni a hajóidat?( M/ A)\n");
+            printf("\nNem megfelelő bemenet\n");
             break;
+        }
     }
-
+    while(inputCount != 1 || readCorrectly == 0);
+    
     DrawMap(0,0);
     return autoTurn;
 
