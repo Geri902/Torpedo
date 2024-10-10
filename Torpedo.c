@@ -101,7 +101,7 @@ void DrawRow(struct Segment map[10], int player, int abc, int single, int end){
 }
 
 void DrawMap(int single, int end){
-    printf("\e[1;1H\e[2J"); //Képernyő clear
+    printf("\e[1;1H\e[2J");
 
     DrawTop(single);
     for(int i = 0; i < 10; i++){
